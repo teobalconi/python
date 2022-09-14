@@ -104,11 +104,11 @@ class ContaPoupanca(Conta):
 
 
 if __name__ == "__main__":
-    ## TESTE CONTA ##
-    # c = Conta(1, 123, 0)
+    # TESTE CONTA #
+    c = Conta(1, 123, 0)
     # c.deposito(100)
 
-    ## TESTE CONTA CORRENTE ##
+    # TESTE CONTA CORRENTE #
 
     # cc = ContaCorrente(1, 123, 200, 500)
     # cc.deposito(100)
@@ -117,7 +117,7 @@ if __name__ == "__main__":
     # cc.sacar(500)
     # cc.extrato()
 
-    ## TESTE CONTA POUPANÇA ##
+    # TESTE CONTA POUPANÇA #
 
     # cp = ContaPoupanca(1, 123, 500)
     # cp.deposito(500)
