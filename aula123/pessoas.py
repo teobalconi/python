@@ -1,4 +1,5 @@
-from conta import Conta
+from conta import ContaCorrente
+
 
 class Pessoas:
     def __init__(self, nome, idade):
@@ -21,10 +22,25 @@ class Pessoas:
     def idade(self, idade):
         self._idade = idade
 
+
 class Cliente(Pessoas):
-    def __init__(self, conta.Conta):
+
+    # conta = Conta()
+    def __init__(self, nome, idade, conta):
+        super().__init__(nome, idade)
+        self._conta = conta
+        if isinstance(self._conta, ContaCorrente):
+            self._limite = conta.limite
+
+    @property
+    def conta(self):
+        return self._conta
+
+    @conta.setter
+    def conta(self, conta):
+        self._conta = conta
 
 
 if __name__ == "__main__":
-    p = Pessoas("Tellyhoe",18)
+    p = Pessoas("Tellyhoe", 18)
     print(f"Nome: {p.nome}, idade = {p.idade}")

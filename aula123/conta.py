@@ -63,24 +63,16 @@ class Conta:
 class ContaCorrente(Conta):
     def __init__(self, agencia, numero_conta, saldo, limite):
         super().__init__(agencia, numero_conta, saldo)
-        self._limite = limite
-
-    @property
-    def limite(self):
-        return self._limite
-
-    @limite.setter
-    def limite(self, limite):
-        self._limite = limite
+        self.limite = limite
 
     def sacar(self, valor):
         if isinstance(valor, (float, int)) and valor > 0:
-            if self._saldo + self._limite >= valor:
+            if self._saldo + self.limite >= valor:
                 self._saldo -= valor
                 self._extrato.append(-valor)
                 print(f"Saque de R${valor} realizado. Seu saldo é: R${self._saldo}")
             else:
-                print(f"Saldo insuficiente: R${self._saldo}. Limite: R${self._limite}")
+                print(f"Saldo insuficiente: R${self._saldo}. Limite: R${self.limite}")
         else:
             print(f"Valor digitado ({valor}) não é um número válido")
             return
