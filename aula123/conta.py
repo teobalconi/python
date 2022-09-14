@@ -119,7 +119,7 @@ if __name__ == "__main__":
 
     ## TESTE CONTA POUPANÇA ##
 
-    cp = ContaPoupanca(1, 123, 500)
-    cp.deposito(500)
-    cp.sacar(800)
-    cp.extrato()
+    # cp = ContaPoupanca(1, 123, 500)
+    # cp.deposito(500)
+    # cp.sacar(800)
+    # cp.extrato()
