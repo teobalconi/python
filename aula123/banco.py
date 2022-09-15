@@ -1,9 +1,27 @@
 from conta import ContaCorrente, ContaPoupanca
 from pessoas import Cliente
 
-cc = ContaCorrente(1,111,500,100)
-c1 = Cliente("Celso Furtado", 45, cc)
+agencias = []
+numero_contas = []
+clientes = []
 
 
-print(c1.conta.limite)
-c1.conta.sacar(600)
+def criar_conta(nome, idade, agencia, numero_conta, saldo, limite=None):
+    cliente = {"c" + str(len(clientes) + 1): dict(nome=nome, idade=idade)}
+
+    if limite and limite > 0:
+        conta = ContaCorrente(agencia, numero_conta, saldo, limite)
+    else:
+        conta = ContaPoupanca(agencia, numero_conta, saldo)
+
+    agencias.append(agencia)
+    numero_contas.append(numero_conta)
+    clientes.append(cliente)
+
+    return Cliente(nome, idade, conta)
+
+
+c1 = criar_conta("Celso Furtado", 42, 1, 111, 500)
+print(agencias)
+print(numero_contas)
+print(clientes, len(clientes))

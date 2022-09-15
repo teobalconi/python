@@ -1,6 +1,3 @@
-from conta import ContaCorrente
-
-
 class Pessoas:
     def __init__(self, nome, idade):
         self._nome = nome
@@ -29,8 +26,6 @@ class Cliente(Pessoas):
     def __init__(self, nome, idade, conta):
         super().__init__(nome, idade)
         self._conta = conta
-        if isinstance(self._conta, ContaCorrente):
-            self._limite = conta.limite
 
     @property
     def conta(self):
