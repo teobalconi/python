@@ -3,25 +3,25 @@ from pessoas import Cliente
 
 
 class Banco:
+    conta = None
+    agencias = []
+    numero_contas = []
+    clientes = []
 
-    def __init__(self):
-        self.agencias = []
-        self.numero_contas = []
-        self.clientes = []
-
-    def criar_conta(self, nome, idade, agencia, numero_conta, saldo, limite=None):
-        cliente = {"c" + str(len(self.clientes) + 1): dict(nome=nome, idade=idade)}
+    @classmethod
+    def criar_conta(cls, nome, idade, agencia, numero_conta, saldo, limite=None):
+        cliente = {"c" + str(len(cls.clientes) + 1): dict(nome=nome, idade=idade)}
 
         if limite and limite > 0:
-            conta = ContaCorrente(agencia, numero_conta, saldo, limite)
+            cls.conta = ContaCorrente(agencia, numero_conta, saldo, limite)
         else:
-            conta = ContaPoupanca(agencia, numero_conta, saldo)
+            cls.conta = ContaPoupanca(agencia, numero_conta, saldo)
 
-        self.agencias.append(agencia)
-        self.numero_contas.append(numero_conta)
-        self.clientes.append(cliente)
+        cls.agencias.append(agencia)
+        cls.numero_contas.append(numero_conta)
+        cls.clientes.append(cliente)
 
-        return Cliente(nome, idade, conta)
+        return Cliente(nome, idade, cls.conta)
 
 
 if __name__ == "__main__":
