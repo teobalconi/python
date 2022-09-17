@@ -9,6 +9,16 @@ class Banco:
     clientes = []
 
     @classmethod
+    def validacao(cls, cliente):
+        dados_cliente = {"nome": cliente.nome, "idade": cliente.idade}
+        if cliente.conta.numero_conta in cls.numero_contas and cliente.conta.agencia in cls.agencias:
+            for n in cls.clientes:
+                if dados_cliente in dict(n).values():
+                    return True
+                else:
+                    return False
+
+    @classmethod
     def criar_conta(cls, nome, idade, agencia, numero_conta, saldo, limite=None):
         cliente = {"c" + str(len(cls.clientes) + 1): dict(nome=nome, idade=idade)}
 
@@ -25,19 +35,13 @@ class Banco:
 
     @classmethod
     def deposito(cls, cliente, valor):
-        dados_cliente = {"nome": cliente.nome, "idade": cliente.idade}
-        if cliente.conta.numero_conta in cls.numero_contas and cliente.conta.agencia in cls.agencias:
-            for n in cls.clientes:
-                if dados_cliente in dict(n).values():
-                    cliente.conta.deposito(valor)
+        if cls.validacao(cliente):
+            cliente.conta.deposito(valor)
 
     @classmethod
     def sacar(cls, cliente, valor):
-        dados_cliente = {"nome": cliente.nome, "idade": cliente.idade}
-        if cliente.conta.numero_conta in cls.numero_contas and cliente.conta.agencia in cls.agencias:
-            for n in cls.clientes:
-                if dados_cliente in dict(n).values():
-                    cliente.conta.sacar(valor)
+        if cls.validacao(cliente):
+            cliente.conta.sacar(valor)
 
 
 if __name__ == "__main__":
