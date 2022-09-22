@@ -7,17 +7,9 @@ class Pessoas:
     def nome(self):
         return self._nome
 
-    @nome.setter
-    def nome(self, nome):
-        self._nome = nome
-
     @property
     def idade(self):
         return self._idade
-
-    @idade.setter
-    def idade(self, idade):
-        self._idade = idade
 
 
 class Cliente(Pessoas):
@@ -30,10 +22,6 @@ class Cliente(Pessoas):
     @property
     def conta(self):
         return self._conta
-
-    @conta.setter
-    def conta(self, conta):
-        self._conta = conta
 
 
 if __name__ == "__main__":

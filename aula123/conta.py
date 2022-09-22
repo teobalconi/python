@@ -1,7 +1,7 @@
-import abc
+from abc import ABC, abstractmethod
 
 
-class Conta:
+class Conta(ABC):
     def __init__(self, agencia, numero_conta, saldo):
         self._agencia = agencia
         self._numero_conta = numero_conta
@@ -16,25 +16,13 @@ class Conta:
     def agencia(self):
         return self._agencia
 
-    @agencia.setter
-    def agencia(self, agencia):
-        self._agencia = agencia
-
     @property
     def numero_conta(self):
         return self._numero_conta
 
-    @numero_conta.setter
-    def numero_conta(self, numero_conta):
-        self._numero_conta = numero_conta
-
     @property
     def saldo(self):
         return self._saldo
-
-    @saldo.setter
-    def saldo(self, saldo):
-        self._saldo = saldo
 
     def deposito(self, valor):
         if isinstance(valor, (float, int)) and valor > 0:
@@ -55,7 +43,7 @@ class Conta:
                 print(f"Saque: R${mov}")
         print(f"Saldo atual: R${self._saldo}")
 
-    @abc.abstractmethod
+    @abstractmethod
     def sacar(self, valor):
         pass
 
