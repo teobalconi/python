@@ -55,7 +55,7 @@ class ContaCorrente(Conta):
 
     def sacar(self, valor):
         if isinstance(valor, (float, int)) and valor > 0:
-            if self._saldo + self.limite >= valor:
+            if (self._saldo + self.limite) >= valor:
                 self._saldo -= valor
                 self._extrato.append(-valor)
                 print(f"Saque de R${valor} realizado. Seu saldo é: R${self._saldo}")
