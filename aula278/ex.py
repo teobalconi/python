@@ -18,8 +18,8 @@ while(datas[-1] != data_final):
 num_parcelas = len(datas)
 valor_parcela = valor_dev / num_parcelas
 
-for data_venc in datas:
-    print(f"Data vencimento: {data_venc.strftime(fmt)}. Parcela: R$ {valor_parcela:.2f}")
+for n, data_venc in enumerate(datas):
+    print(f"Parcela: {n+1}/{num_parcelas}. Vencimento: {data_venc.strftime(fmt)}. Valor: R$ {valor_parcela:.2f}")
 
 '''
 if(__name__ == "__main__"):
